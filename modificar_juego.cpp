@@ -1,10 +1,6 @@
 #include "modificar_juego.h"
 #include "ui_modificar_juego.h"
 #include <QStringList>
-#include <iostream>
-
-using namespace std;
-
 
 modificar_juego::modificar_juego(vector<juego>* j,QWidget *parent) :
     QDialog(parent),

@@ -1,29 +1,15 @@
 #include "iniciar_sesion.h"
 #include "ui_iniciar_sesion.h"
 #include "comprar_juego.h"
-#include <iostream>
 
 #include <QMessageBox>
-
-using std::cout;
-using std::endl;
 
 iniciar_sesion::iniciar_sesion(vector<cliente>* c,vector<juego>* j, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::iniciar_sesion)
 {
     clientes = c;
-    if(clientes->size() > 0){
-        for(int i = 0; i < clientes->size(); i++){
-            cout << clientes->at(i).toString() << endl;
-        }
-    }
     juegos = j;
-    if(juegos->size() > 0){
-        for(int i = 0; i < juegos->size(); i++){
-            cout << juegos->at(i).toString() << endl;
-        }
-    }
     ui->setupUi(this);
 }
 
