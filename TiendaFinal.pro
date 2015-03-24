@@ -43,3 +43,6 @@ FORMS    += mainwindow.ui \
     comprar_juego.ui \
     crear_juego.ui \
     modificar_juego.ui
+
+RESOURCES += \
+    imagenes.qrc

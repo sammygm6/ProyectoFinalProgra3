@@ -17,14 +17,20 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>10</y>
-      <width>81</width>
-      <height>16</height>
+      <x>160</x>
+      <y>20</y>
+      <width>121</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
-     <string>Bienvenido</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="imagenes.qrc">:/vinilo decorativo textos bienvenido.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
@@ -101,6 +107,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="imagenes.qrc"/>
+ </resources>
  <connections/>
 </ui>

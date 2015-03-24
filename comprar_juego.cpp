@@ -31,9 +31,15 @@ void comprar_juego::on_cb_cj_juegos_activated(const QString &arg1)
 
 void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para el combobox
 {
-    double precio;
-    if(((cliente)clientes->at(this->posicion_cliente)).){
-
+    double precio = ((juego)juegos->at(index)).getPrecio();
+    double descuento;
+    if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Normal"){
+        string nombre = ((cliente)clientes->at(this->posicion_cliente)).getNombre();
+        string contrasena = ((cliente)clientes->at(this->posicion_cliente)).getContrasena();
+        string id = ((cliente)clientes->at(this->posicion_cliente)).getID();
+        int edad = ((cliente)clientes->at(this->posicion_cliente)).getEdad();
+        string tipo = ((cliente)clientes->at(this->posicion_cliente)).getTipo();
+        normal tmp = normal(nombre,contrasena,id,edad,tipo);
     }
     ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));
     ui->dsb_cj_precio->setValue(precio);
