@@ -13,6 +13,7 @@ class cliente
     string id;
     int edad;
     string tipo;
+    bool cliente_seleccionado;
 public:
     cliente(string,string,string,int,string);
     cliente(const cliente&);
@@ -22,11 +23,14 @@ public:
     string getContrasena()const;
     string getID()const;
     string getTipo()const;
+    bool getClienteSeleccionado()const;
     int getEdad()const;
     void setNombre(string);
     void setContrasena(string);
     void setTipo(string);
     void setEdad(int);
+    void setClienteSeleccionado(bool);
+
 };
 
 #endif // CLIENTE_H

@@ -4,6 +4,7 @@
 
 #include <QMessageBox>
 
+
 iniciar_sesion::iniciar_sesion(vector<cliente>* c,vector<juego>* j, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::iniciar_sesion)
@@ -35,8 +36,8 @@ void iniciar_sesion::on_pushButton_clicked()
        for(int i = 0; i < clientes->size(); i++){
             cliente tmp = clientes->at(i);
             if(tmp.getNombre() == nombre && tmp.getContrasena() == contrasena){//Aca el if encontro al cliente
+                ((cliente)clientes->at(i)).setClienteSeleccionado(true);
                 comprar_juego c_j(juegos,clientes);
-                c_j.setPosicionCliente(i);
                 c_j.exec();
                 this->close();
             }else{

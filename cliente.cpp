@@ -39,6 +39,9 @@ int cliente::cliente::getEdad()const{
 string cliente::getTipo()const{
     return tipo;
 }
+bool cliente::getClienteSeleccionado()const{
+    return cliente_seleccionado;
+}
 void cliente::setNombre(string nombre){
     this->nombre = nombre;
 }
@@ -53,4 +56,7 @@ void cliente::setEdad(int edad){
 
 void cliente::setTipo(string tipo){
     this->tipo = tipo;
+}
+void cliente::setClienteSeleccionado(bool cliente_seleccionado){
+    this->cliente_seleccionado = cliente_seleccionado;
 }

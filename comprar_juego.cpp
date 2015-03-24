@@ -34,16 +34,17 @@ void comprar_juego::on_cb_cj_juegos_activated(const QString &arg1)
 
 void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para el combobox
 {
-   if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Normal"){
-       ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio() -
-                                   ((normal)clientes->at(this->posicion_cliente)).getDescuento(((juego)juegos->at(index)).getPrecio()));
-   }else if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Gold"){
-       ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio() -
-                                   ((gold)clientes->at(this->posicion_cliente)).getDescuento(((juego)juegos->at(index)).getPrecio()));
-   }else if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Platinum"){
-       ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio() -
-                                   ((platinum)clientes->at(this->posicion_cliente)).getDescuento(((juego)juegos->at(index)).getPrecio()));
-   }
+    cliente tmp();
+
+    for(int i=0; i<clientes->size(); i++){
+        if(((cliente)clientes->at(i)).getClienteSeleccionado()){
+            cout << "Entro al if de Cliente seleccionado" << endl;
+        }
+    }
+
+
+
+
    ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));
    ui->le_cj_clasificacion->setText(QString(((juego)juegos->at(index)).getClasificacion().c_str()));
    ui->le_cj_genero->setText(QString(((juego)juegos->at(index)).getTipo().c_str()));
@@ -58,13 +59,4 @@ void comprar_juego::on_pushButton_clicked()
 {
     juegos->erase(juegos->begin()+ui->cb_cj_juegos->currentIndex());
     this->close();
-}
-///mis mutadores
-
-int comprar_juego::getPosicionCliente()const{
-    return posicion_cliente;
-}
-
-void comprar_juego::setPosicionCliente(int posicion_cliente){
-    this->posicion_cliente = posicion_cliente;
 }
