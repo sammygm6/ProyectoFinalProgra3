@@ -11,6 +11,11 @@ gold::gold(string nombre,string contrasena,string id,int edad,string tipo)
 
 }
 
+gold::gold(const cliente & other)
+    :cliente(other),descuento(0.15),expiracion(10){
+
+}
+
 gold::gold(const gold& other)
     :cliente(other),descuento(0.15),expiracion(10){
 

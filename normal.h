@@ -11,6 +11,7 @@ class normal : public cliente
 public:
     normal(string,string,string,int,string);
     normal(const normal&);
+    normal(const cliente&);
     ~normal();
     virtual string toString()const;
     virtual double getDescuento(double)const;

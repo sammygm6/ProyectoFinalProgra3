@@ -10,6 +10,11 @@ platinum::platinum(string nombre,string contrasena,string id,int edad,string tip
 
 }
 
+platinum::platinum(const cliente& other)
+    :cliente(other),descuento(0.4){
+
+}
+
 platinum::platinum(const platinum& other)
     :cliente(other),descuento(0.4){
 

@@ -13,6 +13,7 @@ class platinum : public cliente
 public:
     platinum(string,string,string,int,string);
     platinum(const platinum&);
+    platinum(const cliente&);
     ~platinum();
     virtual string toString()const;
     virtual double getDescuento(double)const;

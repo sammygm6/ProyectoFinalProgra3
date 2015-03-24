@@ -15,6 +15,7 @@ class gold : public cliente
 public:
     gold(string,string,string,int,string);
     gold(const gold&);
+    gold(const cliente&);
     ~gold();
     virtual string toString()const;
     virtual double getDescuento(double)const;

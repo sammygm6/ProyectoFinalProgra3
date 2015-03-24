@@ -2,6 +2,9 @@
 #include "ui_comprar_juego.h"
 #include <QStringList>
 
+#include <iostream>
+
+using namespace std;
 
 comprar_juego::comprar_juego(vector<juego>* j,vector<cliente>* c,QWidget *parent) :
     QDialog(parent),
@@ -31,20 +34,19 @@ void comprar_juego::on_cb_cj_juegos_activated(const QString &arg1)
 
 void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para el combobox
 {
-    double precio = ((juego)juegos->at(index)).getPrecio();
-    double descuento;
-    if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Normal"){
-        string nombre = ((cliente)clientes->at(this->posicion_cliente)).getNombre();
-        string contrasena = ((cliente)clientes->at(this->posicion_cliente)).getContrasena();
-        string id = ((cliente)clientes->at(this->posicion_cliente)).getID();
-        int edad = ((cliente)clientes->at(this->posicion_cliente)).getEdad();
-        string tipo = ((cliente)clientes->at(this->posicion_cliente)).getTipo();
-        normal tmp = normal(nombre,contrasena,id,edad,tipo);
-    }
-    ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));
-    ui->dsb_cj_precio->setValue(precio);
-    ui->le_cj_clasificacion->setText(QString(((juego)juegos->at(index)).getClasificacion().c_str()));
-    ui->le_cj_genero->setText(QString(((juego)juegos->at(index)).getTipo().c_str()));
+   if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Normal"){
+       ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio() -
+                                   ((normal)clientes->at(this->posicion_cliente)).getDescuento(((juego)juegos->at(index)).getPrecio()));
+   }else if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Gold"){
+       ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio() -
+                                   ((gold)clientes->at(this->posicion_cliente)).getDescuento(((juego)juegos->at(index)).getPrecio()));
+   }else if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == "Platinum"){
+       ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio() -
+                                   ((platinum)clientes->at(this->posicion_cliente)).getDescuento(((juego)juegos->at(index)).getPrecio()));
+   }
+   ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));
+   ui->le_cj_clasificacion->setText(QString(((juego)juegos->at(index)).getClasificacion().c_str()));
+   ui->le_cj_genero->setText(QString(((juego)juegos->at(index)).getTipo().c_str()));
 }
 
 void comprar_juego::on_pushButton_2_clicked()

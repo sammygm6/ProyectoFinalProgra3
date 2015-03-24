@@ -10,6 +10,11 @@ normal::normal(string nombre,string contrasena,string id,int edad,string tipo)
 
 }
 
+normal::normal(const cliente& other)
+    :cliente(other),descuento(0.01){
+
+}
+
 normal::normal(const normal & other)
     :cliente(other),descuento(0.01){
 
