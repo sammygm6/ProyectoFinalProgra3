@@ -12,14 +12,16 @@ class cliente
     string contrasena;
     string id;
     int edad;
+    string tipo;
 public:
-    cliente(string,string,string,int);
+    cliente(string,string,string,int,string);
     cliente(const cliente&);
     ~cliente();
     virtual string toString()const;
     string getNombre()const;
     string getContrasena()const;
     string getID()const;
+    string getTipo()const;
     int getEdad()const;
     void setNombre(string);
     void setContrasena(string);

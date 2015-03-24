@@ -4,7 +4,8 @@
 #include "iniciar_sesion.h"
 #include "crear_juego.h"
 #include "modificar_juego.h"
-
+#include <QInputDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,12 +35,24 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+    string pass = QInputDialog::getText(this,"Administrador","Ingrese password: "
+                                                              "\nhint: admin").toStdString();
+    if(pass == "admin"){
     crear_juego cj(juegos);
     cj.exec();
+    }else{
+        QMessageBox::information(this,tr("Error Fatal"),tr("Ingreso un password incorrecto"));
+    }
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    string pass = QInputDialog::getText(this,"Administrador","Ingrese el Password: "
+                                                                            "\nhint: admin").toStdString();
+    if(pass == "admin"){
     modificar_juego mj(juegos);
     mj.exec();
+    }else{
+        QMessageBox::information(this,tr("Error Fatal"),tr("Ingreso un password incorrecto"));
+    }
 }

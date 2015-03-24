@@ -5,13 +5,13 @@
 using std::string;
 using std::stringstream;
 
-cliente::cliente(string nombre,string contrasena,string id,int edad)
-    :nombre(nombre),contrasena(contrasena),id(id),edad(edad){
+cliente::cliente(string nombre,string contrasena,string id,int edad,string tipo)
+    :nombre(nombre),contrasena(contrasena),id(id),edad(edad),tipo(tipo){
 
 }
 
 cliente::cliente(const cliente& other)
-    :nombre(other.nombre),contrasena(other.contrasena),id(other.id),edad(other.edad){
+    :nombre(other.nombre),contrasena(other.contrasena),id(other.id),edad(other.edad),tipo(other.tipo){
 
 }
 
@@ -36,6 +36,9 @@ string cliente::getID()const{
 int cliente::cliente::getEdad()const{
     return edad;
 }
+string cliente::getTipo()const{
+    return tipo;
+}
 void cliente::setNombre(string nombre){
     this->nombre = nombre;
 }
@@ -46,4 +49,8 @@ void cliente::setContrasena(string contrasena){
 
 void cliente::setEdad(int edad){
     this->edad = edad;
+}
+
+void cliente::setTipo(string tipo){
+    this->tipo = tipo;
 }

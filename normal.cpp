@@ -5,8 +5,8 @@
 using std::string;
 using std::stringstream;
 
-normal::normal(string nombre,string contrasena,string id,int edad)
-    :cliente(nombre,contrasena,id,edad),descuento(0.01){
+normal::normal(string nombre,string contrasena,string id,int edad,string tipo)
+    :cliente(nombre,contrasena,id,edad,tipo),descuento(0.01){
 
 }
 

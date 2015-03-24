@@ -1,5 +1,6 @@
 #include "crear_juego.h"
 #include "ui_crear_juego.h"
+#include <QMessageBox>
 
 crear_juego::crear_juego(vector<juego>* j,QWidget *parent) :
     QDialog(parent),
@@ -20,6 +21,7 @@ void crear_juego::on_pushButton_clicked()
                             ui->dsb_cj_precio->value(),
                             ui->cb_cj_clasificacion->currentText().toStdString(),
                             ui->cb_cj_genero->currentText().toStdString()));
+    QMessageBox::information(this,tr("Exito"),tr("Juego Ingresado"));
     this->close();
 }
 

@@ -13,7 +13,7 @@ class gold : public cliente
     double descuento;
     int expiracion;
 public:
-    gold(string,string,string,int);
+    gold(string,string,string,int,string);
     gold(const gold&);
     ~gold();
     virtual string toString()const;

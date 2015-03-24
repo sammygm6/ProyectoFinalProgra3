@@ -36,8 +36,12 @@ void iniciar_sesion::on_pushButton_clicked()
             cliente tmp = clientes->at(i);
             if(tmp.getNombre() == nombre && tmp.getContrasena() == contrasena){//Aca el if encontro al cliente
                 comprar_juego c_j(juegos,clientes);
+                c_j.setPosicionCliente(i);
                 c_j.exec();
                 this->close();
+            }else{
+                QMessageBox::information(this,tr("Error Fatal"),tr("Nombre o Password incorrecto"
+                                                                   "\Intente denuevo"));
             }
        }
 

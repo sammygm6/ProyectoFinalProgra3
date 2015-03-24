@@ -32,7 +32,7 @@ void comprar_juego::on_cb_cj_juegos_activated(const QString &arg1)
 void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para el combobox
 {
     double precio;
-    if(((cliente)clientes->at(this->posicion_cliente)).){
+    if(((cliente)clientes->at(this->posicion_cliente)).getTipo() == ){
 
     }
     ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));

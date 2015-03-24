@@ -11,7 +11,7 @@ class platinum : public cliente
 {
     double descuento;
 public:
-    platinum(string,string,string,int);
+    platinum(string,string,string,int,string);
     platinum(const platinum&);
     ~platinum();
     virtual string toString()const;

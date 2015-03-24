@@ -9,7 +9,7 @@ class normal : public cliente
 {
     double descuento;
 public:
-    normal(string,string,string,int);
+    normal(string,string,string,int,string);
     normal(const normal&);
     ~normal();
     virtual string toString()const;
