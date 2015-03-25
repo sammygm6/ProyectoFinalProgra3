@@ -6,12 +6,13 @@ using std::string;
 using std::stringstream;
 
 cliente::cliente(string nombre,string contrasena,string id,int edad,string tipo)
-    :nombre(nombre),contrasena(contrasena),id(id),edad(edad),tipo(tipo){
+    :nombre(nombre),contrasena(contrasena),id(id),edad(edad),tipo(tipo),cliente_seleccionado(false){
 
 }
 
 cliente::cliente(const cliente& other)
-    :nombre(other.nombre),contrasena(other.contrasena),id(other.id),edad(other.edad),tipo(other.tipo){
+    :nombre(other.nombre),contrasena(other.contrasena),id(other.id),edad(other.edad),tipo(other.tipo),
+    cliente_seleccionado(false){
 
 }
 
@@ -57,6 +58,9 @@ void cliente::setEdad(int edad){
 void cliente::setTipo(string tipo){
     this->tipo = tipo;
 }
-void cliente::setClienteSeleccionado(bool cliente_seleccionado){
-    this->cliente_seleccionado = cliente_seleccionado;
+void cliente::setClienteSeleccionado(){
+    this->cliente_seleccionado = true;
+}
+double cliente::getDescuento(double precio) const{
+    return 0;
 }

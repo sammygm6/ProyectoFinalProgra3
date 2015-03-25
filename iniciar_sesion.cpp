@@ -1,9 +1,12 @@
 #include "iniciar_sesion.h"
 #include "ui_iniciar_sesion.h"
 #include "comprar_juego.h"
-
+#include <iostream>
 #include <QMessageBox>
+#include <QString>
 
+using std::cout;
+using std::endl;
 
 iniciar_sesion::iniciar_sesion(vector<cliente>* c,vector<juego>* j, QWidget *parent) :
     QDialog(parent),
@@ -34,15 +37,22 @@ void iniciar_sesion::on_pushButton_clicked()
        ui->le_login_contrasena->setText("");
    }else if(clientes->size() > 0){
        for(int i = 0; i < clientes->size(); i++){
-            cliente tmp = clientes->at(i);
-            if(tmp.getNombre() == nombre && tmp.getContrasena() == contrasena){//Aca el if encontro al cliente
-                ((cliente)clientes->at(i)).setClienteSeleccionado(true);
-                comprar_juego c_j(juegos,clientes);
+           cout << "-------------------------------" << endl;
+            cliente tmp = ((cliente)clientes->at(i));
+            if((tmp.getNombre() == nombre) && (tmp.getContrasena() == contrasena)){//Aca el if encontro al cliente
+                ((cliente)clientes->at(i)).setClienteSeleccionado();
+
+                cout << "Nombbre: " << nombre << endl;
+                cout << "Nombre: " << tmp.getNombre() << endl;
+                cout << "Contraseña: " << contrasena << endl;
+                cout << "Contraseña:" << tmp.getContrasena() << endl;
+                ((cliente)clientes->at(i)).setClienteSeleccionado();
+                comprar_juego c_j(juegos,clientes,tmp.getNombre());
+                c_j.setModal(true);
                 c_j.exec();
                 this->close();
             }else{
-                QMessageBox::information(this,tr("Error Fatal"),tr("Nombre o Password incorrecto"
-                                                                   "\Intente denuevo"));
+
             }
        }
 

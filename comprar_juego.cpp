@@ -6,12 +6,13 @@
 
 using namespace std;
 
-comprar_juego::comprar_juego(vector<juego>* j,vector<cliente>* c,QWidget *parent) :
+comprar_juego::comprar_juego(vector<juego>* j,vector<cliente>* c,string nombre,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::comprar_juego)
 {
     juegos = j;
     clientes = c;
+    this->nombre = nombre;
     ui->setupUi(this);
 
     QStringList Lista;
@@ -34,17 +35,15 @@ void comprar_juego::on_cb_cj_juegos_activated(const QString &arg1)
 
 void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para el combobox
 {
-    cliente tmp();
-
-    for(int i=0; i<clientes->size(); i++){
-        if(((cliente)clientes->at(i)).getClienteSeleccionado()){
-            cout << "Entro al if de Cliente seleccionado" << endl;
-        }
-    }
-
-
-
-
+   double descuento;
+   cout << "Nombre------" << this->nombre << endl;
+   for(int i=0; i<clientes->size(); i++){
+       if(((cliente)clientes->at(i)).getNombre() == this->nombre){
+           descuento = ((cliente)clientes->at(i)).getDescuento(((juego)juegos->at(index)).getPrecio());
+           cout << "Descuento: " << descuento << endl;
+       }
+   }
+   ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio()-descuento);
    ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));
    ui->le_cj_clasificacion->setText(QString(((juego)juegos->at(index)).getClasificacion().c_str()));
    ui->le_cj_genero->setText(QString(((juego)juegos->at(index)).getTipo().c_str()));
