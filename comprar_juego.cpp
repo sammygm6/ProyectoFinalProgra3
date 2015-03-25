@@ -1,12 +1,12 @@
 #include "comprar_juego.h"
 #include "ui_comprar_juego.h"
 #include <QStringList>
-
+#include <typeinfo>
 #include <iostream>
 
 using namespace std;
 
-comprar_juego::comprar_juego(vector<juego>* j,vector<cliente>* c,string nombre,QWidget *parent) :
+comprar_juego::comprar_juego(vector<juego*>* j,vector<cliente*>* c,string nombre,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::comprar_juego)
 {
@@ -17,7 +17,7 @@ comprar_juego::comprar_juego(vector<juego>* j,vector<cliente>* c,string nombre,Q
 
     QStringList Lista;
     for(int i = 0; i<juegos->size(); i++){
-        Lista.append(QString(((juego)juegos->at(i)).getNombre().c_str()));
+        Lista.append(QString(juegos->at(i)->getNombre().c_str()));
     }
     ui->cb_cj_juegos->addItems(Lista);
 
@@ -35,18 +35,19 @@ void comprar_juego::on_cb_cj_juegos_activated(const QString &arg1)
 
 void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para el combobox
 {
-   double descuento;
+   double descuento = 0;
+   double precio = juegos->at(index)->getPrecio();
    cout << "Nombre------" << this->nombre << endl;
    for(int i=0; i<clientes->size(); i++){
-       if(((cliente)clientes->at(i)).getNombre() == this->nombre){
-           descuento = ((cliente)clientes->at(i)).getDescuento(((juego)juegos->at(index)).getPrecio());
+       if(clientes->at(i)->getNombre() == this->nombre){
+            descuento = clientes->at(i)->getDescuento(precio);
            cout << "Descuento: " << descuento << endl;
        }
    }
-   ui->dsb_cj_precio->setValue(((juego)juegos->at(index)).getPrecio()-descuento);
-   ui->le_cj_nombre->setText(QString(((juego)juegos->at(index)).getNombre().c_str()));
-   ui->le_cj_clasificacion->setText(QString(((juego)juegos->at(index)).getClasificacion().c_str()));
-   ui->le_cj_genero->setText(QString(((juego)juegos->at(index)).getTipo().c_str()));
+   ui->dsb_cj_precio->setValue(juegos->at(index)->getPrecio()-descuento);
+   ui->le_cj_nombre->setText(QString(juegos->at(index)->getNombre().c_str()));
+   ui->le_cj_clasificacion->setText(QString(juegos->at(index)->getClasificacion().c_str()));
+   ui->le_cj_genero->setText(QString(juegos->at(index)->getTipo().c_str()));
 }
 
 void comprar_juego::on_pushButton_2_clicked()

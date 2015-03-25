@@ -2,7 +2,7 @@
 #include "ui_crear_juego.h"
 #include <QMessageBox>
 
-crear_juego::crear_juego(vector<juego>* j,QWidget *parent) :
+crear_juego::crear_juego(vector<juego*>* j,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::crear_juego)
 {
@@ -17,7 +17,7 @@ crear_juego::~crear_juego()
 
 void crear_juego::on_pushButton_clicked()
 {
-    juegos->push_back(juego(ui->le_cj_nombre->text().toStdString(),
+    juegos->push_back(new juego(ui->le_cj_nombre->text().toStdString(),
                             ui->dsb_cj_precio->value(),
                             ui->cb_cj_clasificacion->currentText().toStdString(),
                             ui->cb_cj_genero->currentText().toStdString()));

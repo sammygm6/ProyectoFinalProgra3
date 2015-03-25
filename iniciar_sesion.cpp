@@ -8,7 +8,7 @@
 using std::cout;
 using std::endl;
 
-iniciar_sesion::iniciar_sesion(vector<cliente>* c,vector<juego>* j, QWidget *parent) :
+iniciar_sesion::iniciar_sesion(vector<cliente*>* c,vector<juego*>* j, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::iniciar_sesion)
 {
@@ -38,16 +38,16 @@ void iniciar_sesion::on_pushButton_clicked()
    }else if(clientes->size() > 0){
        for(int i = 0; i < clientes->size(); i++){
            cout << "-------------------------------" << endl;
-            cliente tmp = ((cliente)clientes->at(i));
-            if((tmp.getNombre() == nombre) && (tmp.getContrasena() == contrasena)){//Aca el if encontro al cliente
-                ((cliente)clientes->at(i)).setClienteSeleccionado();
+            cliente *tmp = clientes->at(i);
+            if((tmp->getNombre() == nombre) && (tmp->getContrasena() == contrasena)){//Aca el if encontro al cliente
+                clientes->at(i)->setClienteSeleccionado();
 
                 cout << "Nombbre: " << nombre << endl;
-                cout << "Nombre: " << tmp.getNombre() << endl;
+                cout << "Nombre: " << tmp->getNombre() << endl;
                 cout << "Contraseña: " << contrasena << endl;
-                cout << "Contraseña:" << tmp.getContrasena() << endl;
-                ((cliente)clientes->at(i)).setClienteSeleccionado();
-                comprar_juego c_j(juegos,clientes,tmp.getNombre());
+                cout << "Contraseña:" << tmp->getContrasena() << endl;
+                clientes->at(i)->setClienteSeleccionado();
+                comprar_juego c_j(juegos,clientes,tmp->getNombre());
                 c_j.setModal(true);
                 c_j.exec();
                 this->close();

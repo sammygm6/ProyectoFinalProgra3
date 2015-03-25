@@ -16,7 +16,7 @@ class modificar_juego : public QDialog
     Q_OBJECT
 
 public:
-    explicit modificar_juego(vector<juego>*,QWidget *parent = 0);
+    explicit modificar_juego(vector<juego*>*,QWidget *parent = 0);
     ~modificar_juego();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 
 private:
     Ui::modificar_juego *ui;
-    vector<juego>* juegos;
+    vector<juego*>* juegos;
 };
 
 #endif // MODIFICAR_JUEGO_H

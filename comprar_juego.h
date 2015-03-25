@@ -22,7 +22,7 @@ class comprar_juego : public QDialog
     Q_OBJECT
 
 public:
-    explicit comprar_juego(vector<juego>*,vector<cliente>*,string,QWidget *parent = 0);
+    explicit comprar_juego(vector<juego*>*,vector<cliente*>*,string,QWidget *parent = 0);
     ~comprar_juego();
 
 private slots:
@@ -36,8 +36,8 @@ private slots:
 
 private:
     Ui::comprar_juego *ui;
-    vector<juego>* juegos;
-    vector<cliente>* clientes;
+    vector<juego*>* juegos;
+    vector<cliente*>* clientes;
     string nombre;
 };
 

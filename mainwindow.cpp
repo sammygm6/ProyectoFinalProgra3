@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    clientes = new vector<cliente>();
-    juegos = new vector<juego>();
+    clientes = new vector<cliente*>;
+    juegos = new vector<juego*>;
     ui->setupUi(this);
 }
 

@@ -19,7 +19,7 @@ public:
     cliente(const cliente&);
     ~cliente();
     virtual string toString()const;
-    virtual double getDescuento(double)const;
+    virtual double getDescuento(double)const=0;
     string getNombre()const;
     string getContrasena()const;
     string getID()const;
@@ -31,7 +31,6 @@ public:
     void setTipo(string);
     void setEdad(int);
     void setClienteSeleccionado();
-
 };
 
 #endif // CLIENTE_H

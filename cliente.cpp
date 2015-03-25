@@ -61,6 +61,3 @@ void cliente::setTipo(string tipo){
 void cliente::setClienteSeleccionado(){
     this->cliente_seleccionado = true;
 }
-double cliente::getDescuento(double precio) const{
-    return 0;
-}

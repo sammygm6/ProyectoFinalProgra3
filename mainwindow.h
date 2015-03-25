@@ -31,8 +31,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    vector<cliente>* clientes;
-    vector<juego>* juegos;
+    vector<cliente*>* clientes;
+    vector<juego*>* juegos;
 };
 
 #endif // MAINWINDOW_H

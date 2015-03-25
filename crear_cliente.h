@@ -19,7 +19,7 @@ class crear_cliente : public QDialog
     Q_OBJECT
 
 public:
-    explicit crear_cliente(vector<cliente>*,QWidget *parent = 0);
+    explicit crear_cliente(vector<cliente*>*,QWidget *parent = 0);
     ~crear_cliente();
 
 private slots:
@@ -29,7 +29,7 @@ private slots:
 
 private:
     Ui::crear_cliente *ui;
-    vector<cliente>* clientes;
+    vector<cliente*>* clientes;
 };
 
 #endif // CREAR_CLIENTE_H

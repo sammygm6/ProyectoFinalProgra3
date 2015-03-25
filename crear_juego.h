@@ -16,7 +16,7 @@ class crear_juego : public QDialog
     Q_OBJECT
 
 public:
-    explicit crear_juego(vector<juego>*,QWidget *parent = 0);
+    explicit crear_juego(vector<juego*>*,QWidget *parent = 0);
     ~crear_juego();
 
 private slots:
@@ -26,7 +26,7 @@ private slots:
 
 private:
     Ui::crear_juego *ui;
-    vector<juego>* juegos;
+    vector<juego*>* juegos;
 };
 
 #endif // CREAR_JUEGO_H

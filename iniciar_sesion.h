@@ -19,7 +19,7 @@ class iniciar_sesion : public QDialog
     Q_OBJECT
 
 public:
-    explicit iniciar_sesion(vector<cliente>*, vector<juego>*,QWidget *parent = 0);
+    explicit iniciar_sesion(vector<cliente*>*, vector<juego*>*,QWidget *parent = 0);
     ~iniciar_sesion();
 
 private slots:
@@ -29,8 +29,8 @@ private slots:
 
 private:
     Ui::iniciar_sesion *ui;
-    vector<cliente>* clientes;
-    vector<juego>* juegos;
+    vector<cliente*>* clientes;
+    vector<juego*>* juegos;
 };
 
 #endif // INICIAR_SESION_H

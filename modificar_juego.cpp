@@ -2,7 +2,7 @@
 #include "ui_modificar_juego.h"
 #include <QStringList>
 
-modificar_juego::modificar_juego(vector<juego>* j,QWidget *parent) :
+modificar_juego::modificar_juego(vector<juego*>* j,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::modificar_juego)
 {
@@ -11,7 +11,7 @@ modificar_juego::modificar_juego(vector<juego>* j,QWidget *parent) :
     QStringList Lista;
     for(int i=0; i<juegos->size();i++){
 
-        Lista.append(QString(((juego)juegos->at(i)).getNombre().c_str()));
+        Lista.append(QString(juegos->at(i)->getNombre().c_str()));
     }
     ui->cb_mj_juegos->addItems(Lista);
 }
@@ -29,18 +29,18 @@ void modificar_juego::on_pushButton_clicked()
     string clasificacion = ui->cb_mj_clasificacion->currentText().toStdString();
     string genero = ui->cb_mj_genero->currentText().toStdString();
     juegos->erase(juegos->begin()+pos);
-    juegos->push_back(juego(nombre,precio,clasificacion,genero));
+    juegos->push_back(new juego(nombre,precio,clasificacion,genero));
     this->close();
 }
 
 void modificar_juego::on_cb_mj_juegos_currentIndexChanged(int index)
 {
-    ui->le_mj_nombre->setText(((juego)juegos->at(index)).getNombre().c_str());
-    ui->dsb_mj_precio->setValue(((juego)juegos->at(index)).getPrecio());
+    ui->le_mj_nombre->setText(juegos->at(index)->getNombre().c_str());
+    ui->dsb_mj_precio->setValue(juegos->at(index)->getPrecio());
     int pos_clasificacion = 0;
     int pos_genero = 0;
-    string clasificacion = ((juego)juegos->at(index)).getClasificacion();
-    string genero = ((juego)juegos->at(index)).getTipo();
+    string clasificacion = juegos->at(index)->getClasificacion();
+    string genero = juegos->at(index)->getTipo();
 
     if(clasificacion == "Ninos" ){
         pos_clasificacion = 0;
