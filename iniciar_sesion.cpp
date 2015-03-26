@@ -40,24 +40,20 @@ void iniciar_sesion::on_pushButton_clicked()
        QMessageBox::information(this,tr("Error"),tr("No Existe Ningun Dato"));
        ui->le_login_nombre->setText("");
        ui->le_login_contrasena->setText("");
-   }else if(clientes->size() > 0){
+   }else if(clientes->size() != 0){
             for(int i = 0; i < clientes->size(); i++){
-                cout << "CLIENTES::" << clientes->at(i)->getNombre();
-                if((clientes->at(i)->getNombre() == nombre) &&
-                        (clientes->at(i)->getContrasena() == contrasena)){//Aca el if encontro al cliente
-                    clientes->at(i)->setClienteSeleccionado();
-                    clientes->at(i)->setClienteSeleccionado();
-                    comprar_juego c_j(juegos,clientes,clientes->at(i)->getNombre());
-                    c_j.setModal(true);
-                    c_j.exec();
+                if(nombre == clientes->at(i)->getNombre() &&
+                        contrasena == clientes->at(i)->getContrasena()){
                     this->close();
-                    break;
+                    QMessageBox::information(this,tr("Bienvenido"),QString(clientes->at(i)->getNombre().c_str()));
+                    comprar_juego cj(juegos,clientes,clientes->at(i)->getNombre(),0);
+                    cj.setModal(true);
+                    cj.exec();
                 }else{
-                    QMessageBox::information(this,tr("Error"),tr("Nombre o Contrasena incorrecto"));
+                    QMessageBox::information(this,tr("Error"),tr("Nombre o Contrasena incorrectos"));
                     ui->le_login_nombre->setText("");
                     ui->le_login_contrasena->setText("");
-                    break;
-            }
+                }
        }
 
    }

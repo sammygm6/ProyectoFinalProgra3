@@ -40,7 +40,6 @@ void comprar_juego::on_cb_cj_juegos_currentIndexChanged(int index)//funcion para
 {
    double descuento = 0;
    double precio = juegos->at(index)->getPrecio();
-   cout << "Nombre------" << this->nombre << endl;
    for(int i=0; i<clientes->size(); i++){
        if(clientes->at(i)->getNombre() == this->nombre){
             descuento = clientes->at(i)->getDescuento(precio);
@@ -63,7 +62,6 @@ void comprar_juego::on_pushButton_clicked()
 {
     double descuento = 0;
     double precio = juegos->at(ui->cb_cj_juegos->currentIndex())->getPrecio();
-    cout << "Nombre------" << this->nombre << endl;
     for(int i=0; i<clientes->size(); i++){
         if(clientes->at(i)->getNombre() == this->nombre){
              descuento = clientes->at(i)->getDescuento(precio);

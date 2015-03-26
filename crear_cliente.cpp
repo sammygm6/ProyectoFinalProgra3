@@ -6,8 +6,10 @@
 #include "normal.h"
 #include "gold.h"
 #include "platinum.h"
+#include <vector>
 
 using namespace std;
+using std::vector;
 
 crear_cliente::crear_cliente(vector<cliente*>* c,QWidget *parent) :
     QDialog(parent),
@@ -29,14 +31,15 @@ void crear_cliente::on_pushButton_clicked()
         QMessageBox::information(this,tr("Error"),tr("No puede dejar algun campo vacio"));
     }else{
             if(ui->cb_n_tipo->currentIndex() == 0){
-                normal* cliente_n = new normal(ui->le_n_nombre->text().toStdString(),
+                clientes->push_back( new normal(ui->le_n_nombre->text().toStdString(),
                                                ui->le_n_contrasena->text().toStdString(),
                                                ui->le_n_id->text().toStdString(),
                                                ui->sb_n_edad->value(),
-                                               ui->cb_n_tipo->currentText().toStdString());
-                clientes->push_back(cliente_n);
-                cout << "Entro a crear una cuenta normal: " << cliente_n->getNombre() << endl;
-
+                                               ui->cb_n_tipo->currentText().toStdString()));
+                //clientes->push_back(cliente_n);
+                //cout << "Entro a crear una cuenta normal: " << cliente_n->getNombre() << endl;
+                QMessageBox::information(this,tr("Felicitaciones"),tr("Creacion de cuenta exitosa"));
+                this->close();
             }else if(ui->cb_n_tipo->currentIndex() == 1){
                 gold* cliente_g = new gold(ui->le_n_nombre->text().toStdString(),
                                            ui->le_n_contrasena->text().toStdString(),
@@ -46,6 +49,8 @@ void crear_cliente::on_pushButton_clicked()
 
                 clientes->push_back(cliente_g);
                 cout << "Entro a crear una cuenta gold" << cliente_g->getNombre() << endl;
+                QMessageBox::information(this,tr("Felicitaciones"),tr("Creacion de cuenta exitosa"));
+                this->close();
             }else if(ui->cb_n_tipo->currentIndex() == 2){
                 platinum* cliente_p = new platinum(ui->le_n_nombre->text().toStdString(),
                                                    ui->le_n_contrasena->text().toStdString(),
@@ -55,9 +60,10 @@ void crear_cliente::on_pushButton_clicked()
 
                 clientes->push_back(cliente_p);
                 cout << "Entro a crear una cuenta platinum" << cliente_p->getNombre() << endl;
+                QMessageBox::information(this,tr("Felicitaciones"),tr("Creacion de cuenta exitosa"));
+                this->close();
             }
-            QMessageBox::information(this,tr("Felicitaciones"),tr("Creacion de cuenta exitosa"));
-            this->close();
+
     }
 }
 

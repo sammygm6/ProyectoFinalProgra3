@@ -1,5 +1,5 @@
 #include "gold.h"
-
+#include "cliente.h"
 #include <string>
 #include <sstream>
 

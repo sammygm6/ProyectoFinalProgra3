@@ -1,4 +1,5 @@
 #include "platinum.h"
+#include "cliente.h"
 #include <string>
 #include <sstream>
 

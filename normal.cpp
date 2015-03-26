@@ -1,4 +1,5 @@
 #include "normal.h"
+#include "cliente.h"
 #include <string>
 #include <sstream>
 
