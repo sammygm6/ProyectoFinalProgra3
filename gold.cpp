@@ -31,6 +31,5 @@ string gold::toString()const{
     return ss.str();
 }
 double gold::getDescuento(double precio)const{
-    double ret = descuento * precio;
-    return precio - ret;
+    return precio*descuento;
 }

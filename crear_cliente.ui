@@ -155,6 +155,12 @@
      <height>26</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>18</number>
+   </property>
+   <property name="maximum">
+    <number>125</number>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">

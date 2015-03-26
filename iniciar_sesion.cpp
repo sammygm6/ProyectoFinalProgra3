@@ -36,23 +36,21 @@ void iniciar_sesion::on_pushButton_clicked()
        ui->le_login_nombre->setText("");
        ui->le_login_contrasena->setText("");
    }else if(clientes->size() > 0){
-       for(int i = 0; i < clientes->size(); i++){
-           cout << "-------------------------------" << endl;
-            cliente *tmp = clientes->at(i);
-            if((tmp->getNombre() == nombre) && (tmp->getContrasena() == contrasena)){//Aca el if encontro al cliente
-                clientes->at(i)->setClienteSeleccionado();
-
-                cout << "Nombbre: " << nombre << endl;
-                cout << "Nombre: " << tmp->getNombre() << endl;
-                cout << "Contraseña: " << contrasena << endl;
-                cout << "Contraseña:" << tmp->getContrasena() << endl;
-                clientes->at(i)->setClienteSeleccionado();
-                comprar_juego c_j(juegos,clientes,tmp->getNombre());
-                c_j.setModal(true);
-                c_j.exec();
-                this->close();
-            }else{
-
+            for(int i = 0; i < clientes->size(); i++){
+                if((clientes->at(i)->getNombre() == nombre) &&
+                        (clientes->at(i)->getContrasena() == contrasena)){//Aca el if encontro al cliente
+                    clientes->at(i)->setClienteSeleccionado();
+                    clientes->at(i)->setClienteSeleccionado();
+                    comprar_juego c_j(juegos,clientes,clientes->at(i)->getNombre());
+                    c_j.setModal(true);
+                    c_j.exec();
+                    this->close();
+                    break;
+                }else{
+                    QMessageBox::information(this,tr("Error"),tr("Nombre o Contrasena incorrecto"));
+                    ui->le_login_nombre->setText("");
+                    ui->le_login_contrasena->setText("");
+                    break;
             }
        }
 

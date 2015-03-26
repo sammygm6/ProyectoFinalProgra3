@@ -30,6 +30,5 @@ string platinum::toString()const{
     return ss.str();
 }
 double platinum::getDescuento(double precio)const{
-    double ret = precio * descuento;
-    return precio - ret;
+    return precio * descuento;
 }
