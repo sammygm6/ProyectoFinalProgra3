@@ -6,7 +6,9 @@
 #include "platinum.h"
 #include "juego.h"
 #include <vector>
+#include <iostream>
 
+using namespace std;
 using std::vector;
 
 int main(int argc, char *argv[])

@@ -4,6 +4,11 @@
 #include <iostream>
 #include <QMessageBox>
 #include <QString>
+#include "cliente.h"
+#include "normal.h"
+#include "gold.h"
+#include "platinum.h"
+#include "juego.h"
 
 using std::cout;
 using std::endl;
@@ -37,6 +42,7 @@ void iniciar_sesion::on_pushButton_clicked()
        ui->le_login_contrasena->setText("");
    }else if(clientes->size() > 0){
             for(int i = 0; i < clientes->size(); i++){
+                cout << "CLIENTES::" << clientes->at(i)->getNombre();
                 if((clientes->at(i)->getNombre() == nombre) &&
                         (clientes->at(i)->getContrasena() == contrasena)){//Aca el if encontro al cliente
                     clientes->at(i)->setClienteSeleccionado();

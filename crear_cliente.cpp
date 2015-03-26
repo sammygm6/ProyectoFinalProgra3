@@ -2,6 +2,10 @@
 #include "ui_crear_cliente.h"
 #include <QMessageBox>
 #include <iostream>
+#include "cliente.h"
+#include "normal.h"
+#include "gold.h"
+#include "platinum.h"
 
 using namespace std;
 
@@ -31,7 +35,7 @@ void crear_cliente::on_pushButton_clicked()
                                                ui->sb_n_edad->value(),
                                                ui->cb_n_tipo->currentText().toStdString());
                 clientes->push_back(cliente_n);
-                cout << "Entro a crear una cuenta normal" << cliente_n->getNombre() << endl;
+                cout << "Entro a crear una cuenta normal: " << cliente_n->getNombre() << endl;
 
             }else if(ui->cb_n_tipo->currentIndex() == 1){
                 gold* cliente_g = new gold(ui->le_n_nombre->text().toStdString(),
