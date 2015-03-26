@@ -49,12 +49,15 @@ void iniciar_sesion::on_pushButton_clicked()
                     comprar_juego cj(juegos,clientes,clientes->at(i)->getNombre(),0);
                     cj.setModal(true);
                     cj.exec();
-                }else{
-                    QMessageBox::information(this,tr("Error"),tr("Nombre o Contrasena incorrectos"));
-                    ui->le_login_nombre->setText("");
-                    ui->le_login_contrasena->setText("");
+                    break;
                 }
        }
 
+   }else {
+       QMessageBox::information(this,tr("Error"),tr("Nombre o Contrasena incorrectos"));
+       ui->le_login_nombre->setText("");
+       ui->le_login_contrasena->setText("");QMessageBox::information(this,tr("Error"),tr("Nombre o Contrasena incorrectos"));
+       ui->le_login_nombre->setText("");
+       ui->le_login_contrasena->setText("");
    }
 }

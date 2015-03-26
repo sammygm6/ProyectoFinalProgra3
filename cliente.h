@@ -2,8 +2,11 @@
 #define CLIENTE_H
 
 #include <string>
+#include <vector>
+#include "juego.h"
 
 using std::string;
+using std::vector;
 
 
 class cliente
@@ -13,7 +16,7 @@ class cliente
     string id;
     int edad;
     string tipo;
-    bool cliente_seleccionado;
+    vector<juego> juegos_comprados;
 public:
     cliente(string,string,string,int,string);
     cliente(const cliente&);
@@ -24,13 +27,13 @@ public:
     string getContrasena()const;
     string getID()const;
     string getTipo()const;
-    bool getClienteSeleccionado()const;
     int getEdad()const;
+    vector<juego> getJuegosComprados()const;
     void setNombre(string);
     void setContrasena(string);
     void setTipo(string);
     void setEdad(int);
-    void setClienteSeleccionado();
+    void addJuegoComprado(juego);
 };
 
 #endif // CLIENTE_H

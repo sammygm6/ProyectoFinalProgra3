@@ -6,13 +6,12 @@ using std::string;
 using std::stringstream;
 
 cliente::cliente(string nombre,string contrasena,string id,int edad,string tipo)
-    :nombre(nombre),contrasena(contrasena),id(id),edad(edad),tipo(tipo),cliente_seleccionado(false){
+    :nombre(nombre),contrasena(contrasena),id(id),edad(edad),tipo(tipo){
 
 }
 
 cliente::cliente(const cliente& other)
-    :nombre(other.nombre),contrasena(other.contrasena),id(other.id),edad(other.edad),tipo(other.tipo),
-    cliente_seleccionado(false){
+    :nombre(other.nombre),contrasena(other.contrasena),id(other.id),edad(other.edad),tipo(other.tipo){
 
 }
 
@@ -40,8 +39,8 @@ int cliente::cliente::getEdad()const{
 string cliente::getTipo()const{
     return tipo;
 }
-bool cliente::getClienteSeleccionado()const{
-    return cliente_seleccionado;
+vector<juego> cliente::getJuegosComprados()const{
+    return this->juegos_comprados;
 }
 void cliente::setNombre(string nombre){
     this->nombre = nombre;
@@ -58,6 +57,6 @@ void cliente::setEdad(int edad){
 void cliente::setTipo(string tipo){
     this->tipo = tipo;
 }
-void cliente::setClienteSeleccionado(){
-    this->cliente_seleccionado = true;
+void cliente::addJuegoComprado(juego jue){
+    juegos_comprados.push_back(jue);
 }

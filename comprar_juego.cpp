@@ -65,6 +65,7 @@ void comprar_juego::on_pushButton_clicked()
     for(int i=0; i<clientes->size(); i++){
         if(clientes->at(i)->getNombre() == this->nombre){
              descuento = clientes->at(i)->getDescuento(precio);
+
         }
     }
     double total = precio - descuento;
